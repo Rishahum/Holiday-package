@@ -1,0 +1,103 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.newsletter {
+  background: #0d2137;
+  padding: 48px 0;
+
+  &__container {
+    @include container;
+    @include flex(center, space-between, 32px);
+    flex-wrap: wrap;
+  }
+
+  &__left {
+    @include flex(center, flex-start, 20px);
+    flex: 1;
+    min-width: 240px;
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    @include flex(center, center);
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    max-width: 220px;
+  }
+
+  &__form {
+    @include flex(center, flex-start, 0);
+    flex: 1;
+    min-width: 280px;
+    max-width: 420px;
+    background: $white;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: $font-primary;
+    color: $text-dark;
+    background: transparent;
+
+    &::placeholder {
+      color: $text-light;
+    }
+  }
+
+  &__btn {
+    background: $primary;
+    color: $white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: $font-primary;
+    cursor: pointer;
+    transition: $transition;
+    white-space: nowrap;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
+
+  &__socials {
+    @include flex(center, flex-end, 12px);
+  }
+
+  &__social {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    @include flex(center, center);
+    transition: $transition;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.search-box {
+  background: $bg-light;
+  padding: 0 0 40px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+
+  &__container {
+    @include container;
+  }
+
+  &__card {
+    background: $white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    padding: 24px;
+  }
+
+  &__tabs {
+    @include flex(center, flex-start, 4px);
+    margin-bottom: 24px;
+  }
+
+  &__tab {
+    @include flex(center, center, 8px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    background: transparent;
+    color: $text-gray;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+
+    svg {
+      transition: $transition;
+    }
+
+    &.active,
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+
+    &.active {
+      box-shadow: 0 4px 12px rgba(30, 107, 230, 0.3);
+    }
+  }
+
+  &__form {
+    @include flex(flex-end, flex-start, 12px);
+    flex-wrap: wrap;
+
+    @include respond-to('lg') {
+      flex-direction: column;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 120px;
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: $text-gray;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+    border-bottom: 1.5px solid $border;
+    padding-bottom: 6px;
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: $text-dark;
+      background: transparent;
+      padding-right: 24px;
+      font-family: $font-primary;
+
+      &::placeholder {
+        color: $text-light;
+        font-weight: 400;
+      }
+    }
+
+    svg {
+      position: absolute;
+      right: 0;
+      bottom: 8px;
+    }
+  }
+
+  &__btn {
+    @include btn-primary;
+    padding: 14px 28px;
+    border-radius: $border-radius-sm;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 15px;
+    height: 48px;
+  }
+}

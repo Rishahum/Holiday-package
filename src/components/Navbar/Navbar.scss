@@ -1,0 +1,126 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $white;
+  box-shadow: 0 1px 0 $border;
+
+  &__container {
+    @include container;
+    @include flex(center, space-between);
+    height: $navbar-height;
+  }
+
+  &__logo {
+    @include flex(center, flex-start, 10px);
+    text-decoration: none;
+  }
+
+  &__logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  &__logo-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-dark;
+    letter-spacing: -0.3px;
+  }
+
+  &__logo-tagline {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: $text-gray;
+    text-transform: uppercase;
+  }
+
+  &__links {
+    @include flex(center, center, 32px);
+
+    a {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-gray;
+      transition: $transition;
+      position: relative;
+
+      &.active,
+      &:hover {
+        color: $primary;
+      }
+
+      &.active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: $primary;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &__right {
+    @include flex(center, flex-end, 16px);
+  }
+
+  &__phone {
+    @include flex(center, flex-start, 10px);
+  }
+
+  &__phone-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: $primary-light;
+    @include flex(center, center);
+  }
+
+  &__phone-label {
+    display: block;
+    font-size: 10px;
+    color: $text-gray;
+    font-weight: 500;
+  }
+
+  &__phone-number {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  &__user {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid $border;
+    background: $white;
+    color: $text-gray;
+    cursor: pointer;
+    @include flex(center, center);
+    transition: $transition;
+
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+
+  @include respond-to('lg') {
+    &__links {
+      display: none;
+    }
+    &__phone {
+      display: none;
+    }
+  }
+}

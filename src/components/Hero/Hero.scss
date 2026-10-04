@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 520px;
+  background-image: url('https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1400&q=80');
+  background-size: cover;
+  background-position: center top;
+  @include flex(center, flex-start);
+  padding-bottom: 80px;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(10, 20, 40, 0.72) 0%,
+      rgba(10, 20, 40, 0.3) 60%,
+      transparent 100%
+    );
+  }
+
+  &__content {
+    @include container;
+    position: relative;
+    z-index: 1;
+    max-width: $container-max;
+    padding-top: 60px;
+  }
+
+  &__tag {
+    @include flex(center, flex-start, 8px);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 52px;
+    font-weight: 800;
+    color: $white;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+
+    &-script {
+      display: block;
+      font-family: $font-script;
+      font-size: 54px;
+      font-weight: 700;
+      font-style: italic;
+      color: $white;
+      line-height: 1.2;
+    }
+
+    @include respond-to('md') {
+      font-size: 36px;
+      &-script {
+        font-size: 38px;
+      }
+    }
+  }
+
+  &__subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+
+  &__cta {
+    @include btn-primary;
+    padding: 14px 28px;
+    font-size: 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(30, 107, 230, 0.4);
+
+    &:hover {
+      box-shadow: 0 6px 28px rgba(30, 107, 230, 0.55);
+      transform: translateY(-2px);
+    }
+  }
+}

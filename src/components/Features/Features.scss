@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.features {
+  background: $bg-light;
+  padding: 0 0 56px;
+
+  &__container {
+    @include container;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    @include respond-to('lg') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    @include flex(flex-start, flex-start, 16px);
+    background: $white;
+    border-radius: $border-radius;
+    padding: 24px;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 50%;
+    background: $primary-light;
+    @include flex(center, center);
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 4px;
+  }
+
+  &__desc {
+    font-size: 13px;
+    color: $text-gray;
+    line-height: 1.5;
+  }
+}

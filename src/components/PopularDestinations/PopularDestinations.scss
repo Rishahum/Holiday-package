@@ -1,0 +1,151 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.destinations {
+  padding: 64px 0;
+  background: $white;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    @include flex(center, space-between);
+    margin-bottom: 32px;
+  }
+
+  &__header-left {
+    @include flex(center, flex-start, 12px);
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 800;
+    color: $text-dark;
+    letter-spacing: -0.5px;
+  }
+
+  &__plane {
+    opacity: 0.7;
+  }
+
+  &__view-all {
+    @include flex(center, flex-end, 8px);
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary;
+    transition: $transition;
+    border: 1.5px solid $primary;
+    padding: 8px 16px;
+    border-radius: 30px;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @include respond-to('lg') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.dest-card {
+  position: relative;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  height: 320px;
+
+  &:hover &__img {
+    transform: scale(1.06);
+  }
+
+  &:hover &__info {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    &--green {
+      background: #16a34a;
+      color: $white;
+    }
+
+    &--purple {
+      background: #7c3aed;
+      color: $white;
+    }
+
+    &--orange {
+      background: #ea580c;
+      color: $white;
+    }
+  }
+
+  &__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 16px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    transition: $transition;
+    @include flex(flex-end, space-between);
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 4px;
+  }
+
+  &__location {
+    @include flex(center, flex-start, 4px);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__price {
+    text-align: right;
+  }
+
+  &__from {
+    display: block;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 2px;
+  }
+
+  &__amount {
+    font-size: 20px;
+    font-weight: 800;
+    color: $white;
+  }
+}
